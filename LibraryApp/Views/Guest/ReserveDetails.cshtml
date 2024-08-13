@@ -1,0 +1,33 @@
+@model LibraryApp.ViewModels.ReservationViewModel
+
+<div class="container">
+    <h2>Reservation Details</h2>
+
+    <h4>Book/CD Information</h4>
+    <p><strong>Name:</strong> @Model.Inventory.Name</p>
+    <p><strong>Type:</strong> @Model.Inventory.Type</p>
+    <p><strong>ISBN:</strong> @Model.Inventory.ISBN</p>
+    <p><strong>Author:</strong> @Model.Inventory.Author</p>
+    <p><strong>Status:</strong> @Model.Inventory.Status</p>
+
+    <hr />
+
+    <h4>Guest Information</h4>
+    <form method="post" action="@Url.Action("Reserve")">
+        <input type="hidden" name="Item_Id" value="@Model.Inventory.Id" />
+        <div class="form-group">
+            <label for="guestName">Guest Name:</label>
+            <input type="text" class="form-control" id="guestName" name="Guest_Name" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="Email" required />
+        </div>
+        <div class="form-group">
+            <label for="reservationMessage">Reservation Message:</label>
+            <textarea class="form-control" id="reservationMessage" name="ReservationMessage"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm Reservation</button>
+    </form>
+</div>
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>

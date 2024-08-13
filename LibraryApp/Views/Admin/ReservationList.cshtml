@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LibraryApp.ViewModels.ReservationViewModel>
+
+<div class="container">
+    <h2>Reservations</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Guest Name</th>
+                <th>Email</th>
+                <th>Reservation Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var resView in Model)
+            {
+                <tr>
+                    <td>@resView.Inventory.Name</td>
+                    <td>@resView.Reservation.Guest_Name</td>
+                    <td>@resView.Reservation.Email</td>
+                    <td>@resView.Reservation.Reservation_Date</td>
+                    <td>
+                        <a href="@Url.Action("Issue", "Admin", new { id = resView.Reservation.Item_Id })" class="btn btn-success">Issue</a>
+                        <a href="@Url.Action("Return", "Admin", new { id =  resView.Reservation.Item_Id })" class="btn btn-warning">Return</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

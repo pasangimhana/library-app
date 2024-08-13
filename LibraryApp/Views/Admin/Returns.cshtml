@@ -1,0 +1,36 @@
+@model IEnumerable<LibraryApp.ViewModels.ReturnViewModel>
+
+@{
+    ViewBag.Title = "Returns";
+}
+
+<h2>Returns</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Return Date</th>
+        <th>Guest Name</th>
+        <th>Email</th>
+        <th>Item Name</th>
+        <th>Item Type</th>
+        <th>Author</th>
+        <th>Return Message</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var returnViewModel in Model)
+    {
+        <tr>
+            <td>@returnViewModel.Return.Return_Date</td>
+            <td>@returnViewModel.Return.Guest_Name</td>
+            <td>@returnViewModel.Return.Email</td>
+            <td>@returnViewModel.Inventory.Name</td>
+            <td>@returnViewModel.Inventory.Type</td>
+            <td>@returnViewModel.Inventory.Author</td>
+            <td>@returnViewModel.Return.ReturnMessage</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Back to Dashboard</a>

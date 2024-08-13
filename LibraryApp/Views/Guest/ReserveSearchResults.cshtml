@@ -1,0 +1,47 @@
+@model IEnumerable<LibraryApp.Models.Inventory>
+
+<div class="container">
+    <h2>Search Results</h2>
+    @if (!Model.Any())
+    {
+        <p>No items found matching your search criteria.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>ISBN</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.ISBN</td>
+                    <td>@item.Author</td>
+                    <td>@item.Status</td>
+                    <td>
+                        @if (item.Status != "Reserved")
+                        {
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("ReserveDetails", new { id = item.Id })">Reserve</a>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Reserved</span>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>

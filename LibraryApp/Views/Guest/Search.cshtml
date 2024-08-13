@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Search Books and CDs";
+}
+
+<div class="container">
+    <h1 class="display-4">Search Books and CDs</h1>
+
+    <form asp-action="SearchResults" method="get">
+        <div class="form-group">
+            <input type="text" name="query" class="form-control" placeholder="Search by Name or Author" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>

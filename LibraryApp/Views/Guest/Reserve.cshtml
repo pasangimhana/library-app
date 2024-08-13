@@ -1,0 +1,15 @@
+﻿@{
+ViewData["Title"] = "Reserve";
+}
+
+<div class="container">
+    <h2>Reserve a Book or CD</h2>
+    <form method="get" action="@Url.Action("ReserveSearchResults")">
+        <div class="form-group">
+            <label for="query">Search by Name or Author:</label>
+            <input type="text" class="form-control" id="query" name="query" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>

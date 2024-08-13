@@ -1,0 +1,31 @@
+@model IEnumerable<LibraryApp.Models.Transaction>
+
+<div class="container">
+    <h2>Transaction History</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Transaction Id</th>
+            <th>Transaction Type</th>
+            <th>Reference Date</th>
+            <th>Item Id</th>
+            <th>Guest Name</th>
+            <th>Guest Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var transaction in Model)
+        {
+        <tr>
+            <td>@transaction.Id</td>
+            <td>@transaction.Transaction_Type</td>
+            <td>@transaction.Reference_Date</td>
+            <td>@transaction.Item_Id</td>
+            <td>@transaction.Guest_Name</td>
+            <td>@transaction.Email</td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Back to Dashboard</a>

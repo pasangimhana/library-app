@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Reservation Confirmation";
+
+    // Redirect to Index (or Reserve) after a delay
+    <meta http-equiv="refresh" content="5; url=@Url.Action("Index", "Home")" />
+}
+
+<div class="container">
+    <h2>Thank You!</h2>
+    <p>Your reservation has been successfully placed. You will be redirected to the reservation page shortly.</p>
+    <p>If the page does not automatically redirect, <a href="@Url.Action("Index", "Home")">click here</a>.</p>
+</div>

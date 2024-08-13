@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section text-center mb-4">
+        <img src="~/assets/cropped-Sydenham.webp" alt="Sydenham Library Logo" class="img-fluid mb-3" style="max-width: 200px;">
+        <h1 class="display-4">Welcome to Sydenham Library</h1>
+        <p>We provide educational resources including books and CDs to students.</p>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="text-center mb-4">
+        <a class="btn btn-primary mx-2" href="@Url.Action("Reserve", "Guest")">Reserve a book</a>
+        <a class="btn btn-success mx-2" href="@Url.Action("Return", "Guest")">Return a book</a>
+        <a class="btn btn-info mx-2" href="@Url.Action("SendMessage", "Guest")">Send a Message</a>
+    </div>
+
+    <!-- Sign In Section -->
+    <div class="text-center">
+        <h3>Sign In</h3>
+        <a class="btn btn-primary" href="@Url.Action("SignIn", "Admin")">Admin Sign In</a>
+    </div>
+</div>

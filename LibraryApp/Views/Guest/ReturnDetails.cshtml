@@ -1,0 +1,39 @@
+@model LibraryApp.ViewModels.ReturnViewModel
+
+@{
+    ViewData["Title"] = "Return Details";
+}
+
+<div class="container">
+    <h2>Return Details</h2>
+    <div>
+        <h4>Reservation Information</h4>
+        <dl class="row">
+            <dt class="col-sm-3">Reservation Date</dt>
+            <dd class="col-sm-9">@Model.Return.Return_Date</dd>
+
+            <dt class="col-sm-3">Item Name</dt>
+            <dd class="col-sm-9">@Model.Inventory.Name</dd>
+
+            <dt class="col-sm-3">Guest Name</dt>
+            <dd class="col-sm-9">@Model.Return.Guest_Name</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Return.Email</dd>
+        </dl>
+
+        <h4>Return Form</h4>
+        <form method="post" action="@Url.Action("Return")">
+            <input type="hidden" name="Item_Id" value="@Model.Inventory.Id" />
+            <input type="hidden" name="Guest_Name" value="@Model.Return.Guest_Name" />
+            <input type="hidden" name="Email" value="@Model.Return.Email" />
+
+            <div class="form-group">
+                <label for="returnMessage">Return Message:</label>
+                <textarea id="returnMessage" name="ReturnMessage" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Return</button>
+        </form>
+    </div>
+</div>

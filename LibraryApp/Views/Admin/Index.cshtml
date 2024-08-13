@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LibraryApp.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<div class="container">
+    <h1 class="display-4">Inventory</h1>
+
+    <div class="mb-3">
+        <a href="@Url.Action("Create", "Admin")" class="btn btn-primary">Create New Item</a>
+        <a class="btn btn-info mx-2" href="@Url.Action("Reservations", "Admin")">View Reservations</a>
+        <a class="btn btn-info mx-2" href="@Url.Action("Returns", "Admin")">View Guest Messages</a>
+        <a class="btn btn-info mx-2" href="@Url.Action("Transactions", "Admin")">View Transactions</a>
+        <a class="btn btn-info mx-2" href="@Url.Action("GuestMessages", "Admin")">View Guest Messages</a>
+
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>ISBN</th>
+                <th>Author</th>
+                <th>Actions</th> <!-- New column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Status</td>
+                    <td>@item.ISBN</td>
+                    <td>@item.Author</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

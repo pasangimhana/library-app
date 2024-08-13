@@ -1,0 +1,62 @@
+﻿@model IEnumerable<LibraryApp.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="container">
+    <h1 class="display-4">Search Results</h1>
+
+    <form asp-action="Search" method="get">
+        <div class="form-group">
+            <input type="text" name="query" class="form-control" placeholder="Search again" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>ISBN</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No results found</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Type</td>
+                        <td>@item.Author</td>
+                        <td>@item.Status</td>
+                        <td>@item.ISBN</td>
+                        <td>
+                            @if (item.Status == "Available")
+                            {
+                                <a href="@Url.Action("Reserve", "Guest", new { itemId = item.Id })" class="btn btn-success">Reserve</a>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Reserved</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,57 @@
+@model LibraryApp.ViewModels.ReservationViewModel
+
+<div class="container">
+    <h2>Reservation Details</h2>
+    <div class="card">
+        <div class="card-header">
+            Reservation ID: @Model.Reservation.Id
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Item Details</h5>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Item Name</th>
+                    <td>@Model.Inventory.Name</td>
+                </tr>
+                <tr>
+                    <th>Item Type</th>
+                    <td>@Model.Inventory.Type</td>
+                </tr>
+                <tr>
+                    <th>Item Status</th>
+                    <td>@Model.Inventory.Status</td>
+                </tr>
+                <tr>
+                    <th>ISBN</th>
+                    <td>@Model.Inventory.ISBN</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>@Model.Inventory.Author</td>
+                </tr>
+            </table>
+
+            <h5 class="card-title">Reservation Details</h5>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Reservation Date</th>
+                    <td>@Model.Reservation.Reservation_Date</td>
+                </tr>
+                <tr>
+                    <th>Guest Name</th>
+                    <td>@Model.Reservation.Guest_Name</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.Reservation.Email</td>
+                </tr>
+                <tr>
+                    <th>Reservation Message</th>
+                    <td>@Model.Reservation.ReservationMessage</td>
+                </tr>
+            </table>
+
+            <a class="btn btn-primary" href="@Url.Action("Reserve", "Guest")">Back to Reservations</a>
+        </div>
+    </div>
+</div>

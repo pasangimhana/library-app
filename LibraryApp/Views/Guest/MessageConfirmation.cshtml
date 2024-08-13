@@ -1,0 +1,10 @@
+@{
+ViewData["Title"] = "Message Sent";
+}
+
+<div class="container">
+    <h2>Message Sent</h2>
+    <p>Your message has been sent successfully.</p>
+    <a href="@Url.Action("SendMessage")" class="btn btn-primary">Send Another Message</a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
+</div>

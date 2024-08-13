@@ -1,0 +1,44 @@
+@model IEnumerable<LibraryApp.ViewModels.ReservationViewModel>
+
+<div class="container">
+    <h2>Reservations</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>Reservation Date</th>
+            <th>Item Name</th>
+            <th>Item Type</th>
+            <th>Item Status</th>
+            <th>ISBN</th>
+            <th>Author</th>
+            <th>Guest Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var reservationViewModel in Model)
+        {
+            <tr>
+                <td>@reservationViewModel.Reservation.Id</td>
+                <td>@reservationViewModel.Reservation.Reservation_Date</td>
+                <td>@reservationViewModel.Inventory.Name</td>
+                <td>@reservationViewModel.Inventory.Type</td>
+                <td>@reservationViewModel.Inventory.Status</td>
+                <td>@reservationViewModel.Inventory.ISBN</td>
+                <td>@reservationViewModel.Inventory.Author</td>
+                <td>@reservationViewModel.Reservation.Guest_Name</td>
+                <td>@reservationViewModel.Reservation.Email</td>
+                <td>
+                    <!-- Accept, Deny Buttons -->
+                    <a href="@Url.Action("Accept", "Admin", new { id = reservationViewModel.Reservation.Id })" class="btn btn-success">Accept</a>
+                    <a href="@Url.Action("Deny", "Admin", new { id = reservationViewModel.Reservation.Id })" class="btn btn-danger">Deny</a>
+                    
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Back to Dashboard</a>

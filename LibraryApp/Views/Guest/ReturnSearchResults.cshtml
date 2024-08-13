@@ -1,0 +1,44 @@
+@model IEnumerable<LibraryApp.Models.Reservation>
+
+@{
+ViewData["Title"] = "Return Search Results";
+}
+
+<div class="container">
+    <h2>Search Results</h2>
+    @if (Model.Any())
+    {
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Reservation Date</th>
+            <th>Item Id</th>
+            <th>Guest Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var reservation in Model)
+        {
+        <tr>
+            <td>@reservation.Id</td>
+            <td>@reservation.Reservation_Date</td>
+            <td>@reservation.Item_Id</td>
+            <td>@reservation.Guest_Name</td>
+            <td>@reservation.Email</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="@Url.Action("ReturnDetails", new { id = reservation.Id })">Return</a>
+
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+    }
+    else
+    {
+    <p>No reservations found for the given email.</p>
+    }
+</div>

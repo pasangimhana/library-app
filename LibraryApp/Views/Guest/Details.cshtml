@@ -1,0 +1,26 @@
+﻿@model LibraryApp.Models.Inventory
+
+@{
+    ViewData["Title"] = "Item Details";
+}
+
+<div class="container">
+    <h1 class="display-4">Item Details</h1>
+
+    <div class="mt-4">
+        <h3>@Model.Name</h3>
+        <p><strong>Type:</strong> @Model.Type</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+        <p><strong>ISBN:</strong> @Model.ISBN</p>
+        <p><strong>Author:</strong> @Model.Author</p>
+
+        @if (Model.Status == "Available")
+        {
+                <a href="@Url.Action("Reserve", "Guest", new { itemId = Model.Id })" class="btn btn-success">Reserve</a>
+        }
+        else
+        {
+                <span class="text-danger">Reserved</span>
+        }
+    </div>
+</div>
